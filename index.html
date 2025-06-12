@@ -4,7 +4,24 @@
         <meta charset="UTF-8" />
         <title>Title</title>
         <script src="./swmgr.js"></script>
+        <script type="importmap">
+            {"imports": {
+                "jose": "https://esm.sh/jose@6.0.11"
+            }}
+        </script>
+        <script type="module" src="./cnt.mjs"></script>
     </head>
     <body>
+        <p>
+        <textarea id="devicekey"></textarea>
+        <button id="setdevicekey">Set Device Key</button>
+        <a target="_blank" id="runlink" onclick="window.open(this.href, 'popupWindow', 'width=400,height=400'); return false;">Start session</a>
+        </p>
+        <p id="infoarea">
+        (not connected)
+        </p>
+        <p id="dataarea">
+        Waiting for connection...
+        </p>
     </body>
 </html>
