@@ -7,7 +7,7 @@
         <!-- FIXME: react-intl was AtlasKit dep -->
         <script type="importmap">
             {"imports": {
-                "jose": "https://esm.sh/jose@6.0.11",
+                "jose": "https://cdn.jsdelivr.net/npm/jose@6.0.11/+esm",
                 "preact": "https://esm.sh/preact@10.26.8",
                 "preact/": "https://esm.sh/preact@10.26.8/",
                 "react": "https://esm.sh/preact@10.26.8/compat",
@@ -18,13 +18,18 @@
                 "@fluentui/react-icons": "https://esm.sh/@fluentui/react-icons@2.0.303?external=react,react-dom",
                 "@lumino/commands": "https://cdn.jsdelivr.net/npm/@lumino/commands@2.3.2/+esm",
                 "@lumino/messaging": "https://cdn.jsdelivr.net/npm/@lumino/messaging@2.0.3/+esm",
-                "@lumino/widgets": "https://cdn.jsdelivr.net/npm/@lumino/widgets@2.7.1/+esm"
+                "@lumino/widgets": "https://cdn.jsdelivr.net/npm/@lumino/widgets@2.7.1/+esm",
+                "@xterm/xterm": "https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/+esm",
+                "@xterm/addon-image": "https://cdn.jsdelivr.net/npm/@xterm/addon-image@0.8.0/+esm",
+                "xterm-pty": "https://cdn.jsdelivr.net/npm/xterm-pty@0.11.1/+esm"
 
             }}
         </script>
         <link href="https://cdn.jsdelivr.net/npm/@lumino/widgets@2.7.1/style/index.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.min.css" rel="stylesheet" />
         <script type="module" src="./cnt.mjs"></script>
         <script type="module" src="./check2.mjs"></script>
+        <script type="module" src="./check3.mjs"></script>
     </head>
     <body>
         <div id="root" style="width:100vw; height:100vh; margin:0; padding:0;"></div>
