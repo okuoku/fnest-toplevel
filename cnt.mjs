@@ -20,7 +20,7 @@ if(window.location.hash.startsWith("#dk=")){
 }
 
 /* WebRTC states */
-const ICE_SERVERS = {
+let ICE_SERVERS = {
     iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
 };
 const RTCconnections = {};
@@ -319,9 +319,18 @@ async function onLinkClick(e){
     sessions[ses].enckey = enckey;
 
     /* Create RTC session */
-    const desc = await runrequest(ses, "con", {req: "new-connection"});
-    console.log("Got initial desc", desc);
-    await newRTC(ses, desc);
+    const pf = await runrequest(ses, "con", {req: "new-connection"});
+    console.log("Got Preflight", pf); // NB: preflight contains ID/PASSWORD
+    /* Adjust ICE_SERVERS */
+    if(pf.turn){
+        console.log("Using local TURN on", pf);
+        ICE_SERVERS = {"iceServers":
+            [{"urls":
+                ["turn:" + pf.turn.ip4 + ":3478?transport=tcp"],
+                "username":pf.turn.u, "credential":pf.turn.p}],
+            "iceTransportPolicy":"relay"};
+    }
+    await newRTC(ses, pf.sdp);
 }
 
 async function onLoad(e){
