@@ -2,10 +2,19 @@ import base64uri from "../base64uri.mjs";
 
 let ses = false;
 
+function striphistory(){
+    /* Do not record history with hash */
+    const clean = window.location.origin
+        + window.location.pathname
+        + window.location.search;
+    window.history.replaceState(null, "", clean);
+}
+
 function myinput(){
+    const log = document.location;
+    const str = location.hash;
+    striphistory();
     try{
-        const log = document.location;
-        const str = location.hash;
         if(str == ""){
             return {};
         }else{
